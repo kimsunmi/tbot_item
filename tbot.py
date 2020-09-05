@@ -1,13 +1,19 @@
 import discord
-from discord.ext import commands
 import os
+import asyncio
 
-client = commands.Bot(commands_prefix = '-')
+client = discord.Client()
+
 @client.event
 async def on_ready():
-    # [discord.Status.online = 온라인],[discord.Status.idle = 자리비움],[discord.Status.dnd = 다른용무],[discord.Status.offline = 오프라인]
-    await client.change_presence(status=discord.Status.online)
-    await client.change_presence(activity=discord.Game(name="테스트중"))
-    print("봇 이름:",client.user.name,"봇 아이디:",client.user.id,"봇 버전:",discord.__version__)
+    await client.change_presence(game=discord.Game(name="itemShop",type=1))
+    print("this is item shop. welcome!")
+
+@client.event
+async def on_message(message):
+    id = message.author.id
+    if message.content.startswith('!itemlist'):
+        await client.send_message('Ha ha, What do you want?')
+    await message.channel.send()
 
 client.run(os.environ['token'])
