@@ -1,6 +1,7 @@
 import discord
 import os
 import asyncio
+import itemlists
 
 client = discord.Client()
 
@@ -11,8 +12,11 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    #id = message.author.id
     if message.content.startswith('!itemlist'):
+        result = itemlists.useitem(str(message.author))
         await message.channel.send('Ha ha, What do you want?')
+        await message.channel.send(result)
+        
+
 
 client.run(os.environ['token'])
