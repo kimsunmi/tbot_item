@@ -17,6 +17,4 @@ async def on_message(message):
         await message.channel.send('Ha ha, What do you want?')
         await message.channel.send(result)
         
-
-
 client.run(os.environ['token'])
