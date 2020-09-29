@@ -38,7 +38,8 @@ async def on_message(message):
 
         #아이템 목록 출력하는 칸임
         if result == 0:
-            await message.channel.send("empty.......")
+            embed = discord.Embed(title="NO Item",description="please buy item first")
+            await message.channel.send(embed=embed)
             return
         else:
             await message.channel.send("item이 있는데요 가져와서 보여주는데 사고가 나는중")
