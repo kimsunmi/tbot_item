@@ -78,9 +78,9 @@ def setStun(person):
 # 아이템 사용 후 테이블 업데이트
 def updateitem(author,item):
     sql = f"select items from member where discord_id='{str(author)}'"
-    sql_result=sql_exe(sql)
-    sql_result=sql_result.replace(item,"",1)
-    sql2 = f"update member set items ='{str(sql_result)}' where discord_id='{str(author)}'"
+    sql_result=str(sql_exe(sql))
+    sql_result2=sql_result.replace(item,"",1)
+    sql2 = f"update member set items ='{str(sql_result2)}' where discord_id='{str(author)}'"
     sql_exe(sql2)
     return f"[+] success use item '{author}', '{item}'" 
 
