@@ -78,10 +78,18 @@ def setStun(person):
 # 아이템 사용 후 테이블 업데이트
 def updateitem(author,item):
     sql = f"select items from member where discord_id='{str(author)}'"
-    sql_result=str(sql_exe(sql))
-    sql_result2=sql_result.replace(item,"",1)
-    sql2 = f"update member set items ='{str(sql_result2)}' where discord_id='{str(author)}'"
-    sql_exe(sql2)
+    try:
+        sql_result=str(sql_exe(sql))
+        sql_result2=sql_result.replace(item,"",1)
+    except Exception as ex:
+        return f"[!] error select '{str(person)}' DB"
+
+    sql2 = f"update member set items ='{str(sql_result2)}' where discord_id='{str(author)}'"    
+    try:
+        sql_exe(sql2)
+    except Exception as ex:
+        return f"[!] error update '{str(person)}' DB"
+    
     return f"[+] success use item '{author}', '{item}'" 
 
 # 소유한 아이템 출력
