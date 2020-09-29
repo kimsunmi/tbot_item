@@ -41,7 +41,7 @@ async def on_message(message):
             await message.channel.send("empty.......")
             return
         else:
-            await message.channel.send("item이 있는데요 가져오는데 보여주는데 사고가 나는중")
+            await message.channel.send("item이 있는데요 가져와서 보여주는데 사고가 나는중")
             await message.channel.send(result)
             
 
