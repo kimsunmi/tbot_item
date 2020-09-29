@@ -33,6 +33,12 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
+    # 시험용 10점 넣기
+    if message.content.startswith('!testupdate'):
+        result=itemlists.testupdate(str(message.author))
+        await message.channel.send(result)
+        return 
+
     if message.content.startswith('!useitem'):
         result = itemlists.useitem(str(message.author))
 

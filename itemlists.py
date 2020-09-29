@@ -46,9 +46,17 @@ def sql_exe(query):
     
     except Exception as ex:
         raise ex
+
+def testupdate(author):
+    sql = f"update member set point = 10 where discord_id='{str(author)}'"
+    try:
+        sql_exe(sql)
+        return "[*]테스트 10점 넣어줌"
+    except Exception as ex:
+        return "[!]업데이트 구문 잘못됨."
 # 사용자가 실제 멤버인지 확인
 def checkMember(person):
-    sql = "select name from member where discord_id='{person}'"
+    sql = f"select name from member where discord_id='{str(person)}'"
     try:
         sql_result=sql_exe(sql)
         return "[*] success access '{person}'",True
@@ -57,11 +65,11 @@ def checkMember(person):
 
 # 아이템 사용 후 테이블 업데이트
 def updateitem(author,item):
-    sql = "select items from member where discord_id='{author}'"
+    sql = f"select items from member where discord_id='{str(author)}'"
     sql_result=sql_exe(sql)
     sql_result=sql_result.replace(item,"",1)
-    sql2 = "update member set items ='{sql_result}' where discord_id='{author}'"
-    sql_update(sql2)
+    sql2 = f"update member set items ='{str(sql_result)}' where discord_id='{str(author)}'"
+    sql_exe(sql2)
     return "[+] success use item '{author}', '{item}'" 
 
 # 소유한 아이템 출력
