@@ -87,7 +87,7 @@ async def on_message(message):
                 await message.channel.send(embed=embed)
                 return
 
-            if user_res in result:
+            if user_res in result.keys():
                 user_res2 = result[user_res][0] # user_res2 = 아이템 명
                 if user_res2 == "STUN":
                     

@@ -53,7 +53,7 @@ def testupdate(author):
     try:
         result=sql_exe(sql)
         #return "[+]테스트 10점 넣어줌"
-        return "[+]db item update '{author}'"
+        return f"[+]db item update '{author}'"
     except Exception as ex:
         return "[!]db x."
 
@@ -62,9 +62,9 @@ def checkMember(person):
     sql = f"select name from member where discord_id='{str(person)}'"
     try:
         sql_result=sql_exe(sql)
-        return "[*] success access '{person}'",True
+        return f"[*] success access '{str(person)}'",True
     except Exception as ex:
-        return "[!] error finding '{person}'",False
+        return f"[!] error finding '{str(person)}'",False
 
 # 사용자 stat -1로 설정하기
 def setStun(person):
@@ -73,7 +73,7 @@ def setStun(person):
         sql_exe(sql)
         return f"[+] success stun '{str(person)}'"
     except Exception as ex:
-        return "[!] error stun '{str(person)}'"
+        return f"[!] error stun '{str(person)}'"
         
 # 아이템 사용 후 테이블 업데이트
 def updateitem(author,item):
@@ -82,7 +82,7 @@ def updateitem(author,item):
     sql_result=sql_result.replace(item,"",1)
     sql2 = f"update member set items ='{str(sql_result)}' where discord_id='{str(author)}'"
     sql_exe(sql2)
-    return "[+] success use item '{author}', '{item}'" 
+    return f"[+] success use item '{author}', '{item}'" 
 
 # 소유한 아이템 출력
 def useitem(author):
@@ -111,7 +111,7 @@ def useitem(author):
             item_dic[id]=[it,count[it]] #딕셔너리로 묶어놓음
             print(id+1,".",item_dic[id][0],":",item_dic[id][1],"개")
 
-        return "[*] success print itemlist {author}", item_dic #아이템 인덱스,[아이템명,가진수] 반환
+        return f"[*] success print itemlist {author}", item_dic #아이템 인덱스,[아이템명,가진수] 반환
 
     except Exception as ex:
         return "[!] error finding your info: ", ex
