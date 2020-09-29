@@ -119,7 +119,7 @@ def useitem(author):
             item_dic[id]=[it,count[it]] #딕셔너리로 묶어놓음
             print(id+1,".",item_dic[id][0],":",item_dic[id][1],"개")
 
-        return f"[*] success print itemlist {author}", item_dic #아이템 인덱스,[아이템명,가진수] 반환
+        return item_dic #아이템 인덱스,[아이템명,가진수] 반환
 
     except Exception as ex:
         return "[!] error finding your info: ", ex

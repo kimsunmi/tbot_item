@@ -89,8 +89,11 @@ async def on_message(message):
                 await message.channel.send(embed=embed)
                 return
 
-            user_res2 = result[user_res] # user_res2 = 아이템 명
-            await message.channel.send(user_res2)
+            await message.channel.send(user_res)
+            user_res2 = result[user_res][0] # user_res2 = 아이템 명
+            await message.channel.send(result)
+
+
             if user_res2 == 'STUN':
                 # 상대방 status = -1 로 업데이트
                 # stun 없애기
