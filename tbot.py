@@ -123,9 +123,8 @@ async def on_message(message):
                 if user_res2 == "BOMB": #보스레이드
                     return
                 '''
-                else:
-                    await message.channel.send("NOT")
-                    return
+                await message.channel.send("NOT")
+                return
 
             else:
                 await message.channel.send("you don't have it. plz check your bag")
