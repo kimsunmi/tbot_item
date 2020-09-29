@@ -88,7 +88,10 @@ async def on_message(message):
                 return
 
             if user_res in result.keys():
+                await message.channel.send(user_res,result.keys())
+                
                 user_res2 = result[user_res][0] # user_res2 = 아이템 명
+                await message.channel.send(user_res2)
                 if user_res2 == 'STUN':
                     
                     # 상대방 status = -1 로 업데이트
