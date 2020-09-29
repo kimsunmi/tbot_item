@@ -94,7 +94,8 @@ async def on_message(message):
                     # 상대방 status = -1 로 업데이트
                     # stun 없애기
                     itemlists.setStun(user_atk)
-                    itemlists.updateitem(str(message.author),"STUN;")
+                    result2 = itemlists.updateitem(str(message.author),"STUN;")
+                    await message.channel.send(result2)
                     return
 
                 if user_res2 == "REDEMPTION":
@@ -102,12 +103,14 @@ async def on_message(message):
                     # 문제 안푸셨나요? = 상태가 0인지 확인
                         # step 사용
                         # redemption 없애기
-                    itemlists.updateitem(str(message.author),"REDEMPTION;")
+                    result2 = itemlists.updateitem(str(message.author),"REDEMPTION;")
+                    await message.channel.send(result2)
                     return
 
                 if user_res2 == "SNAKE": #snake의 기준은 뭐지 문서봐도 모르겠
                     # 스네이크 없애기
-                    itemlists.updateitem(str(message.author),"SNAKE;")
+                    result2 = itemlists.updateitem(str(message.author),"SNAKE;")
+                    await message.channel.send(result2)
                     return
 
                 '''
