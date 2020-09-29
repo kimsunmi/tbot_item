@@ -55,6 +55,16 @@ def checkMember(person):
     except Exception as ex:
         return "[!] error finding '{person}'",False
 
+# 테스트 포인트 10세팅
+def setpoint(author):
+    sql = f"update member set point = 10 where discord_id='{str(author)}'"
+    try:
+        sql_exe(sql)
+        return f"[*] 테스트용 10 포인트세팅"
+    except Exception as ex:
+        return f"[!] setpoint error!\n[INFO]: {ex}"
+
+
 # 아이템 사용 후 테이블 업데이트
 def updateitem(author,item):
     sql = "select items from member where discord_id='{author}'"

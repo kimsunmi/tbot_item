@@ -33,6 +33,9 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
+    if message.content.startswith('!setTest'):
+        itemlists.setpoint(str(message.author))
+        return
     if message.content.startswith('!useitem'):
         result = itemlists.useitem(str(message.author))
         if result == 0:
