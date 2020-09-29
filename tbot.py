@@ -33,16 +33,15 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    if message.content.startswith('!setTest'):
-        itemlists.setpoint(str(message.author))
-        return
     if message.content.startswith('!useitem'):
         result = itemlists.useitem(str(message.author))
+
         if result == 0:
-            message.channel.send("empty.......")
+            await message.channel.send("empty.......")
             return
         else:
-            message.channel.send("여기가 아이템 목록 칸")
+            await message.channel.send("여기가 아이템 목록 칸")
+
         embed = discord.Embed(title="Ha ha, What do you want?", description="5초 안에 아이템 번호를 입력해주세요")
         embed.add_field(name='**사용법**',value='**사용하고자 할 아이템 번호를 입력해주세요. 단, assassin, stun, bomb는 번호와 유저이름을 입력**',inline=False)
         embed.add_field(name='**예시**',value='**`1`, `2`,`3`,`1 kim`,`3 park`**',inline=False)
