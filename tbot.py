@@ -89,28 +89,28 @@ async def on_message(message):
 
             if user_res in result.keys():
                 user_res2 = result[user_res][0] # user_res2 = 아이템 명
-                if user_res2 == "STUN":
+                if user_res2 == 'STUN':
                     
                     # 상대방 status = -1 로 업데이트
                     # stun 없애기
                     itemlists.setStun(user_atk)
                     result2 = itemlists.updateitem(str(message.author),"STUN;")
-                    await message.channel.send(result2)
+                    await message.channel.send("STUN")
                     return
 
-                if user_res2 == "REDEMPTION":
+                if user_res2 == 'REDEMPTION':
                     
                     # 문제 안푸셨나요? = 상태가 0인지 확인
                         # step 사용
                         # redemption 없애기
                     result2 = itemlists.updateitem(str(message.author),"REDEMPTION;")
-                    await message.channel.send(result2)
+                    await message.channel.send("RED")
                     return
 
-                if user_res2 == "SNAKE": #snake의 기준은 뭐지 문서봐도 모르겠
+                if user_res2 == 'SNAKE': #snake의 기준은 뭐지 문서봐도 모르겠
                     # 스네이크 없애기
                     result2 = itemlists.updateitem(str(message.author),"SNAKE;")
-                    await message.channel.send(result2)
+                    await message.channel.send("SNAKE")
                     return
 
                 '''
