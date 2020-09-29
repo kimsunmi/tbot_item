@@ -38,7 +38,6 @@ async def on_message(message):
         return
     if message.content.startswith('!useitem'):
         result = itemlists.useitem(str(message.author))
-        print("tmptmptmp")
         if result == 0:
             message.channel.send("empty.......")
             return
