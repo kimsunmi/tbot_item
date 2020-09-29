@@ -91,47 +91,43 @@ async def on_message(message):
 
             await message.channel.send("next if")
 
-            if user_res in list(result.keys()):
-                await message.channel.send(user_res)
-                user_res2 = result[user_res][0] # user_res2 = 아이템 명
-                await message.channel.send(user_res2)
-                if user_res2 == 'STUN':
-                    # 상대방 status = -1 로 업데이트
-                    # stun 없애기
-                    itemlists.setStun(user_atk)
-                    result2 = itemlists.updateitem(str(message.author),"STUN;")
-                    await message.channel.send("STUN")
-                    return
+            user_res2 = result[user_res][0] # user_res2 = 아이템 명
+            await message.channel.send(user_res2)
+            if user_res2 == 'STUN':
+                # 상대방 status = -1 로 업데이트
+                # stun 없애기
+                itemlists.setStun(user_atk)
+                result2 = itemlists.updateitem(str(message.author),"STUN;")
+                await message.channel.send("STUN")
+                return
 
-                elif user_res2 == 'REDEMPTION':
+            elif user_res2 == 'REDEMPTION':
                     
-                    # 문제 안푸셨나요? = 상태가 0인지 확인
-                        # step 사용
-                        # redemption 없애기
-                    result2 = itemlists.updateitem(str(message.author),"REDEMPTION;")
-                    await message.channel.send("RED")
-                    return
-
-                elif user_res2 == 'SNAKE': #snake의 기준은 뭐지 문서봐도 모르겠
-                    # 스네이크 없애기
-                    result2 = itemlists.updateitem(str(message.author),"SNAKE;")
-                    await message.channel.send("SNAKE")
-                    return
-
-                '''
-                if user_res2 == "STEP": # STEP SKIP
-                    return
-                if user_res2 == "CAFFEINE": #보스레이드
-                    return
-                if user_res2 == "REDBULL": #보스레이드
-                    return
-                if user_res2 == "BOMB": #보스레이드
-                    return
-                '''
-                await message.channel.send("NOT")
+                # 문제 안푸셨나요? = 상태가 0인지 확인
+                    # step 사용
+                    # redemption 없애기
+                result2 = itemlists.updateitem(str(message.author),"REDEMPTION;")
+                await message.channel.send("RED")
                 return
-            else:
-                await message.channel.send("you don't have it. plz check your bag")
+
+            elif user_res2 == 'SNAKE': #snake의 기준은 뭐지 문서봐도 모르겠
+                # 스네이크 없애기
+                result2 = itemlists.updateitem(str(message.author),"SNAKE;")
+                await message.channel.send("SNAKE")
                 return
+
+            '''
+            if user_res2 == "STEP": # STEP SKIP
+                return
+            if user_res2 == "CAFFEINE": #보스레이드
+                return
+            if user_res2 == "REDBULL": #보스레이드
+                return
+            if user_res2 == "BOMB": #보스레이드
+                return
+            '''
+            await message.channel.send("NOT")
+            return
+
 
 client.run(os.environ['token'])
