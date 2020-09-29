@@ -82,13 +82,13 @@ def updateitem(author,item):
         sql_result=str(sql_exe(sql))
         sql_result2=sql_result.replace(item,"",1)
     except Exception as ex:
-        return f"[!] error select '{str(person)}' DB"
+        return f"[!] error select '{str(author)}' DB"
 
     sql2 = f"update member set items ='{str(sql_result2)}' where discord_id='{str(author)}'"    
     try:
         sql_exe(sql2)
     except Exception as ex:
-        return f"[!] error update '{str(person)}' DB"
+        return f"[!] error update '{str(author)}' DB"
     
     return f"[+] success use item '{author}', '{item}'" 
 
