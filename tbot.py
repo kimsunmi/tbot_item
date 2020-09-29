@@ -34,6 +34,7 @@ async def on_ready():
 @client.event
 async def on_message(message):
     # 시험용 10점 넣기
+    # db내 item 가져오기
     if message.content.startswith('!testupdate'):
         result=itemlists.testupdate(str(message.author))
         await message.channel.send(result)

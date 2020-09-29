@@ -51,9 +51,9 @@ def testupdate(author):
     #sql = f"update member set point = 10 where discord_id='{str(author)}'"
     sql = f"select items from member where discord_id='{str(author)}'"
     try:
-        sql_exe(sql)
+        result=sql_exe(sql)
         #return "[+]테스트 10점 넣어줌"
-        return "[*]db select"
+        return "[*]db select",result
     except Exception as ex:
         return "[!]db x."
 # 사용자가 실제 멤버인지 확인
