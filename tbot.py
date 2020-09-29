@@ -38,7 +38,7 @@ async def on_message(message):
         if result == 0:
             message.channel.send("empty.......")
             return
-        embed = discord.Embed(title="Ha ha, What do you want?", description="choose your item 'number' in 5sec")
+        embed = discord.Embed(title="Ha ha, What do you want?", description="5초 안에 아이템 번호를 입력해주세요")
         embed.add_field(name='**사용법**',value='**사용하고자 할 아이템 번호를 입력해주세요. 단, assassin, stun, bomb는 번호와 유저이름을 입력**',inline=False)
         embed.add_field(name='**예시**',value='**`1`, `2`,`3`,`1 kim`,`3 park`**',inline=False)
         channel = message.channel
