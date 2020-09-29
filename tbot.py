@@ -70,8 +70,10 @@ async def on_message(message):
             # 사용자 입력값 검사
             if len(msg.content) < 2: # 입력값 검사
                  user_res = int(msg.content) 
+                 await message.channel.send("input")
 
             elif len(msg.content) == 2: 
+                await message.channel.send("input check")
                 tmp = msg.content.split() #입력값 공백 기준으로 나누기
                 user_res = int(tmp[0]) # user_res = 아이템 인덱스
                 user_atk = tmp[1] # user_atk = 공격받는 유저
@@ -86,6 +88,8 @@ async def on_message(message):
                 embed = discord.Embed(title="Check Check",description="that's not correct answer")
                 await message.channel.send(embed=embed)
                 return
+                
+            await message.channel.send("next if")
 
             if user_res in result.keys():
                 await message.channel.send(user_res,result.keys())
