@@ -48,12 +48,14 @@ def sql_exe(query):
         raise ex
 
 def testupdate(author):
-    sql = f"update member set point = 10 where discord_id='{str(author)}'"
+    #sql = f"update member set point = 10 where discord_id='{str(author)}'"
+    sql = f"select items from member where discord_id='{str(author)}'"
     try:
         sql_exe(sql)
-        return "[+]테스트 10점 넣어줌"
+        #return "[+]테스트 10점 넣어줌"
+        return "[*]db select"
     except Exception as ex:
-        return "[!]업데이트 구문 잘못됨."
+        return "[!]db x."
 # 사용자가 실제 멤버인지 확인
 def checkMember(person):
     sql = f"select name from member where discord_id='{str(person)}'"
@@ -62,7 +64,7 @@ def checkMember(person):
         return "[*] success access '{person}'",True
     except Exception as ex:
         return "[!] error finding '{person}'",False
-        
+
 # 사용자 stat -1로 설정하기
 def setStun(person):
     sql = f"update member set stat = -1 where discord_id='{str(person)}''"
