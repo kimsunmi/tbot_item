@@ -68,11 +68,11 @@ def updateitem(author,item):
 def useitem(author):
     sql = f"select items from member where discord_id='{str(author)}'"
     try:
-        sql_result=sql_exe(sql)
+        sql_result=str(sql_exe(sql))
         # 인덱스. 아이템명 : 소유 개수 형식의 리스트 출력해야함
         itemlist=sql_result.split(";") # 중복있는 아이템목록
         count = Counter(itemlist) # 유저의 아이템 종류 수
-        print("sdsdsdsdsd")
+       
         # 인벤토리가 비었다.
         if len(count) == 1:
             return 0
