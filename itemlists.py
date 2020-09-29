@@ -48,14 +48,15 @@ def sql_exe(query):
         raise ex
 
 def testupdate(author):
-    #sql = f"update member set point = 10 where discord_id='{str(author)}'"
-    sql = f"select items from member where discord_id='{str(author)}'"
+    sql = f"update member set items = 'ASSASSIN;STUN;STEP;STEP;ASSASSIN;SNAKE;SNAKE;REDEMPTION;REDEMTION;STUN;' where discord_id='{str(author)}'"
+    #sql = f"select items from member where discord_id='{str(author)}'"
     try:
         result=sql_exe(sql)
         #return "[+]테스트 10점 넣어줌"
-        return "[*]db select",result
+        return "[+]db item update '{author}'"
     except Exception as ex:
         return "[!]db x."
+
 # 사용자가 실제 멤버인지 확인
 def checkMember(person):
     sql = f"select name from member where discord_id='{str(person)}'"
