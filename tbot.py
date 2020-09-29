@@ -92,6 +92,7 @@ async def on_message(message):
                     
                     # 상대방 status = -1 로 업데이트
                     # stun 없애기
+                    itemlists.setStun(user_atk)
                     itemlists.updateitem(str(message.author),"STUN;")
                     return
 
