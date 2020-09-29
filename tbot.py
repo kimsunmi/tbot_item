@@ -98,7 +98,7 @@ async def on_message(message):
                     await message.channel.send("STUN")
                     return
 
-                if user_res2 == 'REDEMPTION':
+                elif user_res2 == 'REDEMPTION':
                     
                     # 문제 안푸셨나요? = 상태가 0인지 확인
                         # step 사용
@@ -107,7 +107,7 @@ async def on_message(message):
                     await message.channel.send("RED")
                     return
 
-                if user_res2 == 'SNAKE': #snake의 기준은 뭐지 문서봐도 모르겠
+                elif user_res2 == 'SNAKE': #snake의 기준은 뭐지 문서봐도 모르겠
                     # 스네이크 없애기
                     result2 = itemlists.updateitem(str(message.author),"SNAKE;")
                     await message.channel.send("SNAKE")
@@ -123,6 +123,9 @@ async def on_message(message):
                 if user_res2 == "BOMB": #보스레이드
                     return
                 '''
+                else:
+                    await message.channel.send("NOT")
+                    return
 
             else:
                 await message.channel.send("you don't have it. plz check your bag")
