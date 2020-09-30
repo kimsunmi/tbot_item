@@ -48,7 +48,7 @@ def sql_exe(query):
         raise ex
 
 def testupdate(author):
-    sql = f"update member set items = 'ASSASSIN;STUN;STEP;STEP;ASSASSIN;SNAKE;SNAKE;REDEMPTION;REDEMTION;STUN;' where discord_id='{str(author)}'"
+    sql = f"update member set items = 'ASSASSIN;STUN;STEP;STEP;ASSASSIN;SNAKE;SNAKE;REDEMPTION;REDEMPTION;STUN;' where discord_id='{str(author)}'"
     #sql = f"select items from member where discord_id='{str(author)}'"
     try:
         result=sql_exe(sql)
@@ -62,25 +62,39 @@ def checkMember(person):
     sql = f"select name from member where discord_id='{str(person)}'"
     try:
         sql_result=sql_exe(sql)
-        return f"[*] success access '{str(person)}'",True
+        #print(sql_result)
+        return sql_result
     except Exception as ex:
-        return f"[!] error finding '{str(person)}'",False
+        return f"[!] error finding '{str(person)}'"
 
 # 사용자 stat -1로 설정하기
 def setStun(person):
-    sql = f"update member set stat = -1 where discord_id='{str(person)}''"
+    sql = f"update member set status = -1 where discord_id='{str(person)}'"
     try:
         sql_exe(sql)
+        print("[+] success stun")
         return f"[+] success stun '{str(person)}'"
     except Exception as ex:
         return f"[!] error stun '{str(person)}'"
-        
+
+# redemption 사용하여 stat 1로 설정하기
+def setRedemption(author):
+    sql = f"update member set status = 1 where discord_id='{str(author)}'"
+    try:
+        sql_exe(sql)
+        print("[+] success Redemption")
+        return f"[+] success Redemption '{str(author)}'"
+    except Exception as ex:
+        return f"[!] error Redemption '{str(author)}'"
+
 # 아이템 사용 후 테이블 업데이트
 def updateitem(author,item):
     sql = f"select items from member where discord_id='{str(author)}'"
     try:
-        sql_result=str(sql_exe(sql))
-        sql_result2=sql_result.replace(item,"",1)
+        sql_result=sql_exe(sql)
+        #print(sql_result)
+        sql_result2=sql_result[0]['items'].replace(item,"",1)
+        #print(sql_result2)
     except Exception as ex:
         return f"[!] error select '{str(author)}' DB"
 
@@ -92,7 +106,22 @@ def updateitem(author,item):
     
     return f"[+] success use item '{author}', '{item}'" 
 
-# 소유한 아이템 출력
+# assassin으로 사용자 뒤로 옮기기
+def setAssassin(person):
+    sql = f"select map_location from member where discord_id='{str(person)}'"
+    try:
+        sql_result=sql_exe(sql)
+    except Exception as ex:
+        return f"[!] error select '{str(person)}' DB"
+
+    sql2 = f"update member set map_location = {int(sql_result[0]['map_location'])-1} where discord_id='{str(person)}'"    
+    try:
+        sql_exe(sql2)
+    except Exception as ex:
+        return f"[!] error update '{str(person)}' DB"
+    return f"[+] success use item '{person}', Assasin" 
+
+# 소유한 아이템 리턴
 def useitem(author):
     sql = f"select items from member where discord_id='{str(author)}'"
     try:
@@ -117,7 +146,7 @@ def useitem(author):
         for id,it in zip(range(index),itemlists):
             #print(id+1,".",it,":",count[it],"개") # 인덱스. 아이템명:아이템갯수 개 
             item_dic[id]=[it,count[it]] #딕셔너리로 묶어놓음
-            print(id+1,".",item_dic[id][0],":",item_dic[id][1],"개")
+            #print(id+1,".",item_dic[id][0],":",item_dic[id][1],"개")
 
         return item_dic #아이템 인덱스,[아이템명,가진수] 반환
 
